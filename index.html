@@ -120,7 +120,14 @@
         text-decoration: none;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #stocks-section {
+=======
+    .quick-links a:hover {
+        text-decoration: underline;
+    }
+    #stocks-section {
+>>>>>>> parent of 7439da2 (Update index.html)
   display: flex;
   gap: 20px;
   margin-top: 20px;
@@ -134,7 +141,6 @@
   color: white;
   font-family: "JetBrains Mono", monospace;
   box-shadow: 0 0 10px rgba(0,0,0,0.4);
-  min-height: 120px; /* prevents tiny boxes */
 }
 
 .stock-card h2 {
@@ -212,7 +218,11 @@
 <div id="rss-combined"></div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!--ROW 5: STOCKS-->
+=======
+<!-- ROW 5: STOCKS -->
+>>>>>>> parent of 7439da2 (Update index.html)
 <div id="stocks-section">
   <div class="stock-card" id="QQQ"></div>
   <div class="stock-card" id="SPY"></div>
@@ -222,7 +232,6 @@
 =======
 >>>>>>> parent of 4b4806d (Update index.html)
 <script>
-
 /* CLOCK */
 function updateClock() {
     const now = new Date();
@@ -356,7 +365,7 @@ function loadAllStocks() {
 }
 
 loadAllStocks();
-setInterval(loadAllStocks, 60000);
+setInterval(loadAllStocks, 60000); // refresh every 60 seconds
 </script>
 =======
 >>>>>>> parent of 4b4806d (Update index.html)
