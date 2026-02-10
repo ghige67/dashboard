@@ -119,10 +119,7 @@
         margin-bottom: 6px;
         text-decoration: none;
     }
-    .quick-links a:hover {
-        text-decoration: underline;
-    }
-    #stocks-section {
+#stocks-section {
   display: flex;
   gap: 20px;
   margin-top: 20px;
@@ -136,6 +133,7 @@
   color: white;
   font-family: "JetBrains Mono", monospace;
   box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  min-height: 120px; /* prevents tiny boxes */
 }
 
 .stock-card h2 {
@@ -210,7 +208,7 @@
 <!-- ROW 4: NEWS -->
 <div id="rss-combined"></div>
 
-<!-- ROW 5: STOCKS -->
+<!--ROW 5: STOCKS-->
 <div id="stocks-section">
   <div class="stock-card" id="QQQ"></div>
   <div class="stock-card" id="SPY"></div>
@@ -218,6 +216,7 @@
   <div class="stock-card" id="SLV"></div>
 </div>
 <script>
+
 /* CLOCK */
 function updateClock() {
     const now = new Date();
@@ -353,7 +352,7 @@ function loadAllStocks() {
 }
 
 loadAllStocks();
-setInterval(loadAllStocks, 60000); // refresh every 60 seconds
+setInterval(loadAllStocks, 60000);
 </script>
 </body>
 </html>
