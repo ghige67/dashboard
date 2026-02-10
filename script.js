@@ -104,3 +104,33 @@ async function loadAllNews() {
     await loadRSSSectionJSON("Financial", "https://www.marketwatch.com/rss/topstories", 2, container);
 }
 loadAllNews();
+// STOCK DATA
+const tickers = ["QQQ", "SPY", "GLD", "SLV"];
+const API_KEY = "demo"; // free key for basic data
+
+async function loadStock(ticker) {
+  const url = `https://financialmodelingprep.com/api/v3/quote/${ticker}?apikey=${API_KEY}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  const stock = data[0];
+
+  const card = document.getElementById(ticker);
+
+  const changeColor = stock.changesPercentage >= 0 ? "#4caf50" : "#ff5252";
+
+  card.innerHTML = `
+    <h2>${ticker}</h2>
+    <div class="price">$${stock.price.toFixed(2)}</div>
+    <div class="change" style="color:${changeColor}">
+      ${stock.changesPercentage.toFixed(2)}%
+    </div>
+    <div class="volume">Volume: ${stock.volume.toLocaleString()}</div>
+  `;
+}
+
+function loadAllStocks() {
+  tickers.forEach(loadStock);
+}
+
+loadAllStocks();
+setInterval(loadAllStocks, 60000); // refresh every 60 seconds
