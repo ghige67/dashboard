@@ -119,6 +119,46 @@
         margin-bottom: 6px;
         text-decoration: none;
     }
+<<<<<<< HEAD
+#stocks-section {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.stock-card {
+  flex: 1;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+  font-family: "JetBrains Mono", monospace;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  min-height: 120px; /* prevents tiny boxes */
+}
+
+.stock-card h2 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+}
+
+.stock-card .price {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.stock-card .change {
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+.stock-card .volume {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+=======
+>>>>>>> parent of 4b4806d (Update index.html)
 </style>
 </head>
 
@@ -170,6 +210,17 @@
 
 <!-- ROW 4: NEWS -->
 <div id="rss-combined"></div>
+
+<<<<<<< HEAD
+<!--ROW 5: STOCKS-->
+<div id="stocks-section">
+  <div class="stock-card" id="QQQ"></div>
+  <div class="stock-card" id="SPY"></div>
+  <div class="stock-card" id="GLD"></div>
+  <div class="stock-card" id="SLV"></div>
+</div>
+=======
+>>>>>>> parent of 4b4806d (Update index.html)
 <script>
 
 /* CLOCK */
@@ -276,6 +327,38 @@ async function loadAllNews() {
     await loadRSSSectionJSON("Tucson", "https://www.kgun9.com/news/local-news.rss", 2, container);
     await loadRSSSectionJSON("Financial", "https://www.marketwatch.com/rss/topstories", 2, container);
 }
+loadAllNews();
 </script>
+
+<<<<<<< HEAD
+async function loadStock(ticker) {
+  const url = `https://financialmodelingprep.com/api/v3/quote/${ticker}?apikey=${API_KEY}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  const stock = data[0];
+
+  const card = document.getElementById(ticker);
+
+  const changeColor = stock.changesPercentage >= 0 ? "#4caf50" : "#ff5252";
+
+  card.innerHTML = `
+    <h2>${ticker}</h2>
+    <div class="price">$${stock.price.toFixed(2)}</div>
+    <div class="change" style="color:${changeColor}">
+      ${stock.changesPercentage.toFixed(2)}%
+    </div>
+    <div class="volume">Volume: ${stock.volume.toLocaleString()}</div>
+  `;
+}
+
+function loadAllStocks() {
+  tickers.forEach(loadStock);
+}
+
+loadAllStocks();
+setInterval(loadAllStocks, 60000);
+</script>
+=======
+>>>>>>> parent of 4b4806d (Update index.html)
 </body>
 </html>
