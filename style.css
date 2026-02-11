@@ -111,3 +111,24 @@
         margin-bottom: 6px;
         text-decoration: none;
     }
+    /* STOCK CARDS */
+#stocks-row .card {
+    text-align: center;
+    font-size: 16px;
+}
+
+.stock-price {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 6px 0;
+}
+
+.stock-change {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.stock-volume {
+    font-size: 13px;
+    opacity: 0.8;
+}

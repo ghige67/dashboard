@@ -104,3 +104,45 @@ async function loadAllNews() {
     await loadRSSSectionJSON("Financial", "https://www.marketwatch.com/rss/topstories", 2, container);
 }
 loadAllNews();
+/* STOCKS — Alpha Vantage */
+const AV_KEY = "3HKJ5T7DTJI44MW7";  // paste your key here
+const stockSymbols = ["QQQ", "SPY", "GLD", "SLV"];
+
+async function loadStockAV(symbol) {
+    const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${AV_KEY}`;
+
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        const quote = data["Global Quote"];
+
+        if (!quote) {
+            document.getElementById(`stock-${symbol}`).textContent = "Unavailable";
+            return;
+        }
+
+        const price = parseFloat(quote["05. price"]);
+        const changePercent = parseFloat(quote["10. change percent"]);
+        const volume = parseInt(quote["06. volume"]);
+
+        const color = changePercent >= 0 ? "#4caf50" : "#ff5252";
+
+        document.getElementById(`stock-${symbol}`).innerHTML = `
+            <h3>${symbol}</h3>
+            <div class="stock-price">$${price.toFixed(2)}</div>
+            <div class="stock-change" style="color:${color}">
+                ${changePercent.toFixed(2)}%
+            </div>
+            <div class="stock-volume">Vol: ${volume.toLocaleString()}</div>
+        `;
+    } catch (err) {
+        document.getElementById(`stock-${symbol}`).textContent = "Error loading";
+    }
+}
+
+function loadAllStocksAV() {
+    stockSymbols.forEach(loadStockAV);
+}
+
+loadAllStocksAV();
+setInterval(loadAllStocksAV, 60000); // refresh every minute
