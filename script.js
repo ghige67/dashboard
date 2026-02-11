@@ -122,3 +122,6 @@ async function loadAllNews() {
     await loadRSSSectionJSON("Financial", "https://www.marketwatch.com/rss/topstories", 2, container);
 }
 loadAllNews();
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("searchBox").focus();
+});
