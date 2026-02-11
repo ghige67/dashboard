@@ -28,7 +28,7 @@ body {
     color: #fff;
     font-family: "JetBrains Mono", monospace;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     gap: 20px;
 }
