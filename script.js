@@ -106,27 +106,32 @@ async function loadAllNews() {
 loadAllNews();
 
 // STOCK DATA
+// STOCK DATA (Yahoo Finance via RapidAPI-free proxy)
 const tickers = ["QQQ", "SPY", "GLD", "SLV"];
-const API_KEY = "demo"; // free key for basic data
 
 async function loadStock(ticker) {
-  const url = `https://financialmodelingprep.com/api/v3/quote/${ticker}?apikey=${API_KEY}`;
-  const res = await fetch(url);
-  const data = await res.json();
-  const stock = data[0];
+  const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${ticker}`;
 
-  const card = document.getElementById(ticker);
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    const stock = data.quoteResponse.result[0];
 
-  const changeColor = stock.changesPercentage >= 0 ? "#4caf50" : "#ff5252";
+    const card = document.getElementById(ticker);
 
-  card.innerHTML = `
-    <h2>${ticker}</h2>
-    <div class="price">$${stock.price.toFixed(2)}</div>
-    <div class="change" style="color:${changeColor}">
-      ${stock.changesPercentage.toFixed(2)}%
-    </div>
-    <div class="volume">Volume: ${stock.volume.toLocaleString()}</div>
-  `;
+    const changeColor = stock.regularMarketChangePercent >= 0 ? "#4caf50" : "#ff5252";
+
+    card.innerHTML = `s
+      <h2>${ticker}</h2>
+      <div class="price">$${stock.regularMarketPrice.toFixed(2)}</div>
+      <div class="change" style="color:${changeColor}">
+        ${stock.regularMarketChangePercent.toFixed(2)}%
+      </div>
+      <div class="volume">Volume: ${stock.regularMarketVolume.toLocaleString()}</div>
+    `;
+  } catch (err) {
+    console.error("Stock load error:", err);
+  }
 }
 
 function loadAllStocks() {
@@ -134,4 +139,4 @@ function loadAllStocks() {
 }
 
 loadAllStocks();
-setInterval(loadAllStocks, 60000); // refresh every 60 seconds
+setInterval(loadAllStocks, 60000);
