@@ -13,105 +13,114 @@
     font-size: 60px;
     font-weight: 600;
 }
-   body {
-        margin: 0;
-        padding: 20px;
-        background: #121212;
-        color: #fff;
-        font-family: "JetBrains Mono", monospace;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
 
-    .row {
-        width: 100%;
-        max-width: 1000px;
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-    }
+body {
+    margin: 0;
+    padding: 20px;
+    background: #121212;
+    color: #fff;
+    font-family: "JetBrains Mono", monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
 
-    .card {
-        flex: 1;
-        padding: 15px;
-        background: #1e1e1e;
-        border-radius: 10px;
-    }
+.row {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
 
-    .card h3 {
-        margin: 0 0 10px 0;
-        font-size: 18px;
-        font-weight: 600;
-    }
+.card {
+    flex: 1;
+    padding: 15px;
+    background: #1e1e1e;
+    border-radius: 10px;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
 
-    #rss-combined {
-        width: 100%;
-        max-width: 1000px;
-        background: #1e1e1e;
-        border-radius: 10px;
-        padding: 15px;
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-    }
+/* ⭐ UNIVERSAL CARD HOVER GLOW (all cards) */
+.card:hover {
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+}
 
-    .news-section {
-        flex: 1;
-        min-width: 0;
-    }
+.card h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: 600;
+}
 
-    .news-section h3 {
-        margin: 0 0 8px 0;
-        font-size: 16px;
-        font-weight: 600;
-    }
+#rss-combined {
+    width: 100%;
+    max-width: 1000px;
+    background: #1e1e1e;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
 
-    .rss-item {
-        margin-bottom: 10px;
-        font-size: 14px;
-        line-height: 1.3;
-    }
+.news-section {
+    flex: 1;
+    min-width: 0;
+}
 
-    /* SEARCH BAR */
-    .search-wrapper {
-        position: relative;
-        width: 100%;
-    }
+.news-section h3 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 600;
+}
 
-    .search-wrapper input {
-        width: 100%;
-        padding: 10px 60px 10px 12px;
-        border-radius: 6px;
-        border: none;
-        font-family: "JetBrains Mono", monospace;
-        font-size: 15px;
-        box-sizing: border-box;
-    }
+.rss-item {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.3;
+}
 
-    .search-wrapper button {
-        position: absolute;
-        right: 8px;
-        top: 50%;
-        transform: translateY(-50%);
-        padding: 6px 12px;
-        border: none;
-        border-radius: 6px;
-        background: #4da3ff;
-        color: #fff;
-        font-family: "JetBrains Mono", monospace;
-        cursor: pointer;
-        font-size: 14px;
-    }
+/* SEARCH BAR */
+.search-wrapper {
+    position: relative;
+    width: 100%;
+}
 
-    .quick-links a {
-        display: block;
-        color: #4da3ff;
-        margin-bottom: 6px;
-        text-decoration: none;
-    }
-    /* STOCK CARDS */
+.search-wrapper input {
+    width: 100%;
+    padding: 10px 60px 10px 12px;
+    border-radius: 6px;
+    border: none;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.search-wrapper button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background: #4da3ff;
+    color: #fff;
+    font-family: "JetBrains Mono", monospace;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.quick-links a {
+    display: block;
+    color: #4da3ff;
+    margin-bottom: 6px;
+    text-decoration: none;
+}
+
+/* STOCK CARDS */
 #stocks-row .card {
     text-align: center;
     font-size: 16px;
@@ -132,15 +141,13 @@
     font-size: 13px;
     opacity: 0.8;
 }
-/* STOCK & METAL CARD RINGS + EFFECTS */
+
+/* ⭐ STOCK & METAL CARD RINGS + EFFECTS */
 #stocks-row .card {
     border-radius: 12px !important;
     padding: 15px !important;
     border: 3px solid transparent !important;
-
-    /* This forces the card background to allow gradients */
     background: linear-gradient(#1e1e1e, #1e1e1e) padding-box !important;
-
     transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
@@ -172,7 +179,7 @@
         linear-gradient(135deg, #c0c0c0, #f2f2f2) border-box !important;
 }
 
-/* Hover Glow + Lift */
+/* ⭐ STRONGER HOVER GLOW FOR STOCK/METAL CARDS */
 #stocks-row .card:hover {
     box-shadow: 0 0 18px rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
