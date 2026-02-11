@@ -42,12 +42,6 @@ body {
     transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
-/* ⭐ UNIVERSAL CARD HOVER GLOW (all cards) */
-.card:hover {
-    box-shadow: 0 0 14px rgba(255, 255, 255, 0.12);
-    transform: translateY(-2px);
-}
-
 .card h3 {
     margin: 0 0 10px 0;
     font-size: 18px;
@@ -118,69 +112,4 @@ body {
     color: #4da3ff;
     margin-bottom: 6px;
     text-decoration: none;
-}
-
-/* STOCK CARDS */
-#stocks-row .card {
-    text-align: center;
-    font-size: 16px;
-}
-
-.stock-price {
-    font-size: 22px;
-    font-weight: 600;
-    margin: 6px 0;
-}
-
-.stock-change {
-    font-size: 16px;
-    margin-bottom: 6px;
-}
-
-.stock-volume {
-    font-size: 13px;
-    opacity: 0.8;
-}
-
-/* ⭐ STOCK & METAL CARD RINGS + EFFECTS */
-#stocks-row .card {
-    border-radius: 12px !important;
-    padding: 15px !important;
-    border: 3px solid transparent !important;
-    background: linear-gradient(#1e1e1e, #1e1e1e) padding-box !important;
-    transition: box-shadow 0.25s ease, transform 0.25s ease;
-}
-
-/* QQQ — Blue Tech Gradient */
-#stock-QQQ {
-    background:
-        linear-gradient(#1e1e1e, #1e1e1e) padding-box,
-        linear-gradient(135deg, #4da3ff, #0066ff) border-box !important;
-}
-
-/* SPY — Deep Green Market Gradient */
-#stock-SPY {
-    background:
-        linear-gradient(#1e1e1e, #1e1e1e) padding-box,
-        linear-gradient(135deg, #0b6623, #1fa34a) border-box !important;
-}
-
-/* GOLD — Metallic Gold Gradient */
-#metal-gold {
-    background:
-        linear-gradient(#1e1e1e, #1e1e1e) padding-box,
-        linear-gradient(135deg, #d4af37, #f7e27c) border-box !important;
-}
-
-/* SILVER — Metallic Silver Gradient */
-#metal-silver {
-    background:
-        linear-gradient(#1e1e1e, #1e1e1e) padding-box,
-        linear-gradient(135deg, #c0c0c0, #f2f2f2) border-box !important;
-}
-
-/* ⭐ STRONGER HOVER GLOW FOR STOCK/METAL CARDS */
-#stocks-row .card:hover {
-    box-shadow: 0 0 18px rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
 }
