@@ -31,8 +31,6 @@ setInterval(() => {
     updateClock();
     getGreeting();
 }, 1000);
-updateClock();
-getGreeting();
 
 /* SEARCH */
 document.getElementById("searchBox").addEventListener("keydown", e => {
