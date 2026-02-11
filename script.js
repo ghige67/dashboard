@@ -104,6 +104,7 @@ async function loadAllNews() {
     await loadRSSSectionJSON("Financial", "https://www.marketwatch.com/rss/topstories", 2, container);
 }
 loadAllNews();
+
 // STOCK DATA
 const tickers = ["QQQ", "SPY", "GLD", "SLV"];
 const API_KEY = "demo"; // free key for basic data
