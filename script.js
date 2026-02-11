@@ -11,15 +11,28 @@ function updateClock() {
 
     const date = now.toLocaleDateString("en-US", {
         weekday: "long",
-        month: "long",
+        month: "short",
         day: "numeric"
     });
+function getGreeting() {
+    const hour = new Date().getHours();
+    let greeting = "";
+    if (hour < 12) {
+        greeting = "Good morning";
+    } else if (hour < 18) {
+        greeting = "Good afternoon";
+    } else {
+        greeting = "Good evening";
+    }
 
-    document.getElementById("dateLine").textContent = date;
-    document.getElementById("timeLine").textContent = time;
+    document.getElementById("greetingLine").textContent = greeting;
 }
-setInterval(updateClock, 1000);
+setInterval(() => {
+    updateClock();
+    getGreeting();
+}, 1000);
 updateClock();
+getGreeting();
 
 /* SEARCH */
 document.getElementById("searchBox").addEventListener("keydown", e => {
