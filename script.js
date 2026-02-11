@@ -177,10 +177,61 @@ async function loadMetal(id, metal) {
     }
 }
 
-function loadMetals() {
-    loadMetal("metal-gold", "gold");
-    loadMetal("metal-silver", "silver");
+/* PRECIOUS METALS — BullionVault XML (no key, stable) */
+
+let lastGold = null;
+let lastSilver = null;
+
+async function loadBullionVault() {
+    const url = "https://www.bullionvault.com/view_market_xml.do";
+
+    try {
+        const res = await fetch(url);
+        const xmlText = await res.text();
+
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(xmlText, "text/xml");
+
+        // Extract gold (XAU) and silver (XAG) USD prices
+        const goldNode = xml.querySelector('market currency="USD" symbol="XAU"');
+        const silverNode = xml.querySelector('market currency="USD" symbol="XAG"');
+
+        const goldPrice = parseFloat(goldNode.getAttribute("mid"));
+        const silverPrice = parseFloat(silverNode.getAttribute("mid"));
+
+        // Calculate change since last update
+        const goldChange = lastGold ? goldPrice - lastGold : 0;
+        const silverChange = lastSilver ? silverPrice - lastSilver : 0;
+
+        lastGold = goldPrice;
+        lastSilver = silverPrice;
+
+        const goldColor = goldChange >= 0 ? "#4caf50" : "#ff5252";
+        const silverColor = silverChange >= 0 ? "#4caf50" : "#ff5252";
+
+        // Update GOLD card
+        document.getElementById("metal-gold").innerHTML = `
+            <h3>GOLD</h3>
+            <div class="stock-price">$${goldPrice.toFixed(2)}</div>
+            <div class="stock-change" style="color:${goldColor}">
+                ${goldChange >= 0 ? "+" : ""}${goldChange.toFixed(2)}
+            </div>
+        `;
+
+        // Update SILVER card
+        document.getElementById("metal-silver").innerHTML = `
+            <h3>SILVER</h3>
+            <div class="stock-price">$${silverPrice.toFixed(2)}</div>
+            <div class="stock-change" style="color:${silverColor}">
+                ${silverChange >= 0 ? "+" : ""}${silverChange.toFixed(2)}
+            </div>
+        `;
+
+    } catch (err) {
+        document.getElementById("metal-gold").textContent = "Unavailable";
+        document.getElementById("metal-silver").textContent = "Unavailable";
+    }
 }
 
-loadMetals();
-setInterval(loadMetals, 60000);
+loadBullionVault();
+setInterval(loadBullionVault, 60000);
