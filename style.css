@@ -137,7 +137,10 @@
     border-radius: 12px !important;
     padding: 15px !important;
     border: 3px solid transparent !important;
+
+    /* This forces the card background to allow gradients */
     background: linear-gradient(#1e1e1e, #1e1e1e) padding-box !important;
+
     transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
