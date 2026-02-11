@@ -24,7 +24,7 @@
 body {
     margin: 0;
     padding: 20px;
-    background: #121212;
+    background: #000000;
     color: #fff;
     font-family: "JetBrains Mono", monospace;
     display: flex;
@@ -123,8 +123,8 @@ body {
 .card {
     flex: 1;
     padding: 15px;
-    background: #1e1e1e;
-    border-radius: 10px;
+    background: #000000;
+    border-radius: 7px;
     margin: 2px; 
     transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
