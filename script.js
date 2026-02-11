@@ -17,8 +17,8 @@ function updateClock() {
 
     document.getElementById("clockTime").textContent = time;
     document.getElementById("clockDate").textContent = date;
-}
 
+}
 function getGreeting() {
     const hour = new Date().getHours();
     let greeting = "";
@@ -36,6 +36,7 @@ setInterval(() => {
     updateClock();
     getGreeting();
 }, 1000);
+
 
 /* SEARCH */
 document.getElementById("searchBox").addEventListener("keydown", e => {

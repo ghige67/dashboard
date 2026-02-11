@@ -3,21 +3,23 @@
     font-weight: 600;
     margin-bottom: 6px;
 }
-#dateLine {
+#clockDate {
     font-size: 18px;
     opacity: 0.8;
     margin-bottom: 4px;
 }
 
-#timeLine {
+#clockTime {
     font-size: 60px;
     font-weight: 600;
+    margin-bottom: 6px;
 }
+
 #greetingLine {
     font-size: 18px;
     opacity: 0.8;
     margin-top: 4px;
-}   
+}
 
 body {
     margin: 0;
