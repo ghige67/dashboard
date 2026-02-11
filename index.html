@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
- <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -24,7 +24,8 @@
         <a href="https://calendar.google.com" target="_blank">Google Calendar</a>
         <a href="https://ito.intuit.com" target="_blank">Intuit</a>
     </div>
-</div>
+</div> <!-- ← THIS CLOSING TAG IS WHAT FIXES YOUR LAYOUT -->
+
 <!-- ROW 2: THREE WEATHER CARDS -->
 <div class="row">
     <div class="card">
@@ -54,7 +55,8 @@
 </div>
 
 <!-- ROW 4: NEWS -->
-<div id="rss-combined"></div> 
+<div id="rss-combined"></div>
+
 <script src="script.js"></script>
 </body>
 </html>
