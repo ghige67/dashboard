@@ -105,7 +105,7 @@ async function loadAllNews() {
 }
 loadAllNews();
 /* STOCKS — Alpha Vantage */
-const AV_KEY = "3HKJ5T7DTJI44MW7";  // paste your key here
+const AV_KEY = "3HKJ5T7DTJI44MW7";  // your key
 const stockSymbols = ["QQQ", "SPY", "GLD", "SLV"];
 
 async function loadStockAV(symbol) {
@@ -116,6 +116,7 @@ async function loadStockAV(symbol) {
         const data = await res.json();
         const quote = data["Global Quote"];
 
+        // If rate-limited or no data returned
         if (!quote) {
             document.getElementById(`stock-${symbol}`).textContent = "Unavailable";
             return;
@@ -140,9 +141,13 @@ async function loadStockAV(symbol) {
     }
 }
 
+/* Staggered loader to avoid rate limits */
 function loadAllStocksAV() {
-    stockSymbols.forEach(loadStockAV);
+    stockSymbols.forEach((symbol, index) => {
+        setTimeout(() => loadStockAV(symbol), index * 15000); 
+    });
 }
 
+// Initial load + refresh every minute
 loadAllStocksAV();
-setInterval(loadAllStocksAV, 60000); // refresh every minute
+setInterval(loadAllStocksAV, 60000);
