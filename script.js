@@ -14,6 +14,11 @@ function updateClock() {
         month: "short",
         day: "numeric"
     });
+
+    document.getElementById("clockTime").textContent = time;
+    document.getElementById("clockDate").textContent = date;
+}
+
 function getGreeting() {
     const hour = new Date().getHours();
     let greeting = "";
