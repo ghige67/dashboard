@@ -106,7 +106,7 @@ async function loadAllNews() {
 loadAllNews();
 /* STOCKS — Alpha Vantage */
 const AV_KEY = "3HKJ5T7DTJI44MW7";  // your key
-const stockSymbols = ["QQQ", "SPY", "GLD", "SLV"];
+const stockSymbols = ["QQQ", "SPY"];
 
 async function loadStockAV(symbol) {
     const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${AV_KEY}`;
@@ -151,3 +151,36 @@ function loadAllStocksAV() {
 // Initial load + refresh every minute
 loadAllStocksAV();
 setInterval(loadAllStocksAV, 60000);
+/* PRECIOUS METALS — Metals.live (open source) */
+
+async function loadMetal(id, metal) {
+    const url = `https://api.metals.live/v1/spot/${metal}`;
+
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        const price = data[0].price;
+        const change = data[0].change;
+
+        const color = change >= 0 ? "#4caf50" : "#ff5252";
+
+        document.getElementById(id).innerHTML = `
+            <h3>${metal.toUpperCase()}</h3>
+            <div class="stock-price">$${price.toFixed(2)}</div>
+            <div class="stock-change" style="color:${color}">
+                ${change.toFixed(2)}
+            </div>
+        `;
+    } catch {
+        document.getElementById(id).textContent = "Unavailable";
+    }
+}
+
+function loadMetals() {
+    loadMetal("metal-gold", "gold");
+    loadMetal("metal-silver", "silver");
+}
+
+loadMetals();
+setInterval(loadMetals, 60000);
