@@ -121,10 +121,15 @@ body {
     text-decoration: none;
 }
 .card {
+    flex: 1;
+    padding: 15px;
+    background: #1e1e1e;
+    border-radius: 10px;
+    margin: 2px; /* ← gives the glow room to show */
     transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .card:hover {
-    box-shadow: 0 0 18px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 22px rgba(255, 255, 255, 0.25);
     transform: translateY(-2px);
 }
