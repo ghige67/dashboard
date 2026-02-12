@@ -12,10 +12,19 @@
 
 #clockTime {
     font-size: 60px;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: 2px;
     margin-bottom: 6px;
 }
+@keyframes pulse212 {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
 
+.pulse-212 {
+    animation: pulse212 0.6s ease-out;
+}
 #greetingLine {
     font-size: 18px;
     opacity: 0.8;

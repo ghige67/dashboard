@@ -10,7 +10,7 @@ function updateClock() {
     });
 
     const date = now.toLocaleDateString("en-US", {
-        weekday: "long",
+        weekday: "short",
         month: "short",
         day: "numeric"
     });
@@ -18,6 +18,19 @@ function updateClock() {
     document.getElementById("clockTime").textContent = time;
     document.getElementById("clockDate").textContent = date;
 
+  // 212 pulse logic
+const timeCard = document.getElementById("time-card");
+
+// remove spaces and AM/PM to avoid formatting issues
+const normalized = time.replace(/\s|AM|PM/gi, "");
+
+if (normalized.includes("212")) {
+    timeCard.classList.add("pulse-212");
+
+    setTimeout(() => {
+        timeCard.classList.remove("pulse-212");
+    }, 600);
+}
 }
 function getGreeting() {
     const hour = new Date().getHours();
