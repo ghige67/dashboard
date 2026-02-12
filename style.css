@@ -136,3 +136,6 @@ body {
 #time-card {
     font-family: "Geo", sans-serif;
 }
+#clockTime {
+    letter-spacing: 1px;
+}
